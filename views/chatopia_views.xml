@@ -1,0 +1,37 @@
+<odoo>
+    <record id="view_chat_conversation_tree" model="ir.ui.view">
+        <field name="name">chat.conversation.tree</field>
+        <field name="model">chatopia.conversation</field>
+        <field name="arch" type="xml">
+            <tree string="Conversations">
+                <field name="name"/>
+                <field name="inbox"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_chat_conversation_form" model="ir.ui.view">
+        <field name="name">chat.conversation.form</field>
+        <field name="model">chatopia.conversation</field>
+        <field name="arch" type="xml">
+            <form string="Conversation">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="inbox"/>
+                    </group>
+                    <notebook>
+                        <page string="Messages">
+                            <field name="message_ids">
+                                <tree string="Messages">
+                                    <field name="sender"/>
+                                    <field name="content"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

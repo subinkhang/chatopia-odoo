@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Conversation 1: Từ Facebook -->
+    <record id="chat_conversation_1" model="chatopia.conversation">
+        <field name="name">Conversation 1</field>
+        <field name="inbox">Facebook</field>
+    </record>
+    <record id="chat_message_1" model="chatopia.message">
+        <field name="conversation_id" ref="chat_conversation_1"/>
+        <field name="sender">User 1</field>
+        <field name="content">Hello, this is a message.</field>
+    </record>
+    <record id="chat_message_2" model="chatopia.message">
+        <field name="conversation_id" ref="chat_conversation_1"/>
+        <field name="sender">User 2</field>
+        <field name="content">Hi User 1! How are you?</field>
+    </record>
+    <record id="chat_message_3" model="chatopia.message">
+        <field name="conversation_id" ref="chat_conversation_1"/>
+        <field name="sender">User 1</field>
+        <field name="content">I'm good, thanks! How about you?</field>
+    </record>
+
+    <!-- Conversation 2: Từ Zalo -->
+    <record id="chat_conversation_2" model="chatopia.conversation">
+        <field name="name">Conversation 2</field>
+        <field name="inbox">Zalo</field>
+    </record>
+    <record id="chat_message_4" model="chatopia.message">
+        <field name="conversation_id" ref="chat_conversation_2"/>
+        <field name="sender">User 3</field>
+        <field name="content">Hey, are you free this weekend?</field>
+    </record>
+    <record id="chat_message_5" model="chatopia.message">
+        <field name="conversation_id" ref="chat_conversation_2"/>
+        <field name="sender">User 4</field>
+        <field name="content">Yes, I am! Let's plan something.</field>
+    </record>
+
+    <!-- Conversation 3: Từ Instagram -->
+    <record id="chat_conversation_3" model="chatopia.conversation">
+        <field name="name">Conversation 3</field>
+        <field name="inbox">Instagram</field>
+    </record>
+    <record id="chat_message_6" model="chatopia.message">
+        <field name="conversation_id" ref="chat_conversation_3"/>
+        <field name="sender">User 5</field>
+        <field name="content">Check out this new post I found!</field>
+    </record>
+    <record id="chat_message_7" model="chatopia.message">
+        <field name="conversation_id" ref="chat_conversation_3"/>
+        <field name="sender">User 6</field>
+        <field name="content">Wow, that looks amazing!</field>
+    </record>
+    <record id="chat_message_8" model="chatopia.message">
+        <field name="conversation_id" ref="chat_conversation_3"/>
+        <field name="sender">User 5</field>
+        <field name="content">Right? Let's try it out!</field>
+    </record>
+
+    <!-- Conversation 4: Từ WhatsApp -->
+    <record id="chat_conversation_4" model="chatopia.conversation">
+        <field name="name">Conversation 4</field>
+        <field name="inbox">WhatsApp</field>
+    </record>
+    <record id="chat_message_9" model="chatopia.message">
+        <field name="conversation_id" ref="chat_conversation_4"/>
+        <field name="sender">User 7</field>
+        <field name="content">Can you send me the project details?</field>
+    </record>
+    <record id="chat_message_10" model="chatopia.message">
+        <field name="conversation_id" ref="chat_conversation_4"/>
+        <field name="sender">User 8</field>
+        <field name="content">Sure, I'll send them over now.</field>
+    </record>
+
+    <!-- Conversation 5: Từ Telegram -->
+    <record id="chat_conversation_5" model="chatopia.conversation">
+        <field name="name">Conversation 5</field>
+        <field name="inbox">Telegram</field>
+    </record>
+    <record id="chat_message_11" model="chatopia.message">
+        <field name="conversation_id" ref="chat_conversation_5"/>
+        <field name="sender">User 9</field>
+        <field name="content">Hey, did you join the group yet?</field>
+    </record>
+    <record id="chat_message_12" model="chatopia.message">
+        <field name="conversation_id" ref="chat_conversation_5"/>
+        <field name="sender">User 10</field>
+        <field name="content">Not yet, can you send the link?</field>
+    </record>
+</odoo>
