@@ -4,8 +4,10 @@
         <field name="model">chatopia.conversation</field>
         <field name="arch" type="xml">
             <tree string="Conversations">
-                <field name="name"/>
-                <field name="inbox"/>
+                <field name="chatwoot_conversation_id"/>
+                <field name="inbox_name"/>
+                <field name="sender_name"/>
+                <field name="contact_id"/>
             </tree>
         </field>
     </record>
@@ -17,8 +19,10 @@
             <form string="Conversation">
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="inbox"/>
+                        <field name="chatwoot_conversation_id"/>
+                        <field name="inbox_name"/>
+                        <field name="sender_name"/>
+                        <field name="contact_id"/>
                     </group>
                     <notebook>
                         <page string="Messages">
@@ -26,6 +30,7 @@
                                 <tree string="Messages">
                                     <field name="sender"/>
                                     <field name="content"/>
+                                    <field name="chatwoot_message_id"/>
                                 </tree>
                             </field>
                         </page>
