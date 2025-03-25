@@ -9,7 +9,7 @@
     'depends': ['base'],
     'data': [
         'security/ir.model.access.csv',
-        'data/chatopia_mock_data.xml',
+        # 'data/chatopia_mock_data.xml',
         'views/chatopia_menu.xml',
         'views/chatopia_views.xml',
     ],

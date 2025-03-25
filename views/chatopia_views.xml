@@ -1,4 +1,5 @@
 <odoo>
+    <!-- Tree View (giữ nguyên) -->
     <record id="view_chat_conversation_tree" model="ir.ui.view">
         <field name="name">chat.conversation.tree</field>
         <field name="model">chatopia.conversation</field>
@@ -12,6 +13,7 @@
         </field>
     </record>
 
+    <!-- Form View (đã thêm UI để nhập tin nhắn và gửi) -->
     <record id="view_chat_conversation_form" model="ir.ui.view">
         <field name="name">chat.conversation.form</field>
         <field name="model">chatopia.conversation</field>
@@ -19,9 +21,9 @@
             <form string="Conversation">
                 <sheet>
                     <group>
-                        <field name="chatwoot_conversation_id"/>
-                        <field name="inbox_name"/>
-                        <field name="sender_name"/>
+                        <field name="chatwoot_conversation_id" readonly="1"/>
+                        <field name="inbox_name" readonly="1"/>
+                        <field name="sender_name" readonly="1"/>
                         <field name="contact_id"/>
                     </group>
                     <notebook>
@@ -33,6 +35,11 @@
                                     <field name="chatwoot_message_id"/>
                                 </tree>
                             </field>
+                            <!-- Thêm phần nhập tin nhắn và nút gửi -->
+                            <group string="Reply">
+                                <field name="message_content" placeholder="Enter your message..." nolabel="1"/>
+                                <button name="send_message_to_chatwoot" string="Send" type="object" class="btn-primary"/>
+                            </group>
                         </page>
                     </notebook>
                 </sheet>
