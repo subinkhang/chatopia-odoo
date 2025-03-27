@@ -11,7 +11,7 @@
         'security/ir.model.access.csv',
         # 'data/chatopia_mock_data.xml',
         'views/chatopia_menu.xml',
-        'views/chatopia_views.xml',
+        'views/chatopia_views.xml'
     ],
     'installable': True,
     'application': True,

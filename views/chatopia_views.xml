@@ -25,6 +25,8 @@
                         <field name="inbox_name" readonly="1"/>
                         <field name="sender_name" readonly="1"/>
                         <field name="contact_id"/>
+                        <field name="x_chatwoot_contact_id"/>
+                        <field name="x_chatwoot_inbox_id"/>
                     </group>
                     <notebook>
                         <page string="Messages">
