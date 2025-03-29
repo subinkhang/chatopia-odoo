@@ -40,7 +40,7 @@
                             <!-- Thêm phần nhập tin nhắn và nút gửi -->
                             <group string="Reply">
                                 <field name="message_content" placeholder="Enter your message..." nolabel="1"/>
-                                <button name="send_message_to_chatwoot" string="Send" type="object" class="btn-primary"/>
+                                <button name="send_message_to_zalo" string="Send" type="object" class="btn-primary"/>
                             </group>
                         </page>
                     </notebook>
