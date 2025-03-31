@@ -1,0 +1,72 @@
+<!-- chatopia_messenger/static/src/xml/messenger_templates.xml -->
+<templates xml:space="preserve">
+
+    <!-- Template chính -->
+    <t t-name="chatopia.MessengerView" owl="1">
+        <div class="o_chatopia_messenger">
+            <div class="o_chatopia_list_pane">
+                <div class="o_chatopia_list_header">
+                     <input type="text" placeholder="Tìm kiếm trên Messenger..." class="o_chatopia_search"/>
+                </div>
+                <div class="o_chatopia_conversations"/>
+            </div>
+            <div class="o_chatopia_chat_pane">
+                <div class="o_chatopia_chat_header">
+                    <!-- Display active conversation name/avatar -->
+                </div>
+                <div class="o_chatopia_messages_window">
+                     <!-- Messages will be rendered here -->
+                </div>
+                <div class="o_chatopia_message_input_area">
+                     <!-- Input field and send button -->
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <!-- Template cho item conversation -->
+    <t t-name="chatopia.ConversationListItem" owl="1">
+      <div t-attf-class="o_chatopia_conv_item {{ props.isActive ? 'active' : '' }}" t-att-data-id="props.conversation.id" t-on-click="() => props.onClick(props.conversation.id)">
+          <!-- Hiển thị avatar placeholder nếu avatar_src là false/rỗng -->
+          <!-- <img t-att-src="props.conversation.avatar_src or '/web/static/src/img/placeholder.png'" class="o_chatopia_conv_avatar"/> -->
+          <div class="o_chatopia_conv_details">
+              <!-- Hiển thị tên, nếu rỗng thì hiển thị "Unknown" -->
+              <div class="o_chatopia_conv_name"><t t-esc="props.conversation.name or 'Unknown'"/></div>
+              <div class="o_chatopia_conv_preview">
+                  <!-- Hiển thị preview, nếu rỗng thì không hiển thị gì hoặc text mặc định -->
+                  <!-- <span class="o_chatopia_conv_last_msg"><t t-esc="props.conversation.last_message_content or ''"/></span> -->
+                  <!-- Hiển thị thời gian nếu có -->
+                  <!-- <span t-if="props.conversation.last_message_display_time" class="o_chatopia_conv_time">· <t t-esc="props.conversation.last_message_display_time"/></span> -->
+              </div>
+          </div>
+          <!-- Hiển thị badge nếu unread_count > 0 -->
+          <!-- <span t-if="props.conversation.unread_count > 0" class="o_chatopia_unread_badge"/> -->
+      </div>
+  </t>
+
+    <!-- Template cho item message -->
+    <t t-name="chatopia.MessageItem" owl="1">
+      <div t-attf-class="o_chatopia_message_line {{ props.message.message_type === 'admin' ? 'admin' : 'user' }}">
+          <!-- Hiển thị avatar user nếu có -->
+          <!-- <img t-if="props.message.message_type === 'user' and props.message.sender_avatar_src" t-att-src="props.message.sender_avatar_src" class="o_chatopia_message_avatar"/> -->
+          <!-- Hiển thị placeholder nếu là user mà ko có avatar -->
+          <img t-elif="props.message.message_type === 'user'" src="/web/static/src/img/placeholder.png" class="o_chatopia_message_avatar"/>
+
+          <div class="o_chatopia_message_bubble">
+              <!-- Hiển thị content, nếu rỗng thì hiển thị placeholder text -->
+              <t t-esc="props.message.content or '[empty message]'"/>
+              <!-- Có thể thêm hiển thị thời gian ở đây nếu muốn -->
+              <!-- <span t-if="props.message.display_time" class="o_chatopia_message_time"><t t-esc="props.message.display_time"/></span> -->
+          </div>
+      </div>
+  </t>
+
+    <!-- Template cho ô nhập liệu -->
+    <t t-name="chatopia.MessageInput" owl="1">
+         <div class="o_chatopia_composer">
+             <input type="text" placeholder="Aa" class="o_chatopia_input" t-ref="messageInput" t-on-keyup="onInputKeyup"/>
+             <button class="btn btn-primary o_chatopia_send_button" t-on-click="sendMessage">Gửi</button>
+         </div>
+     </t>
+
+</templates>

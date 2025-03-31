@@ -1,108 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Conversation 1: Từ Facebook -->
-    <record id="chat_conversation_1" model="chatopia.conversation">
-        <field name="chatwoot_conversation_id">1</field>
-        <field name="inbox_name">Facebook</field>  <!-- Thay inbox -->
-        <field name="sender_name">User 1</field>
-    </record>
-    <record id="chat_message_1" model="chatopia.message">
-        <field name="conversation_id" ref="chat_conversation_1"/>
-        <field name="sender">User 1</field>
-        <field name="content">Hello, this is a message.</field>
-        <field name="chatwoot_message_id">101</field>
-    </record>
-    <record id="chat_message_2" model="chatopia.message">
-        <field name="conversation_id" ref="chat_conversation_1"/>
-        <field name="sender">User 2</field>
-        <field name="content">Hi User 1! How are you?</field>
-        <field name="chatwoot_message_id">102</field>
-    </record>
-    <record id="chat_message_3" model="chatopia.message">
-        <field name="conversation_id" ref="chat_conversation_1"/>
-        <field name="sender">User 1</field>
-        <field name="content">I'm good, thanks! How about you?</field>
-        <field name="chatwoot_message_id">103</field>
-    </record>
+    <data noupdate="1">
 
-    <!-- Conversation 2: Từ Zalo -->
-    <record id="chat_conversation_2" model="chatopia.conversation">
-        <field name="chatwoot_conversation_id">2</field>
-        <field name="inbox_name">Zalo</field>  <!-- Thay inbox -->
-        <field name="sender_name">User 3</field>
-    </record>
-    <record id="chat_message_4" model="chatopia.message">
-        <field name="conversation_id" ref="chat_conversation_2"/>
-        <field name="sender">User 3</field>
-        <field name="content">Hey, are you free this weekend?</field>
-        <field name="chatwoot_message_id">104</field>
-    </record>
-    <record id="chat_message_5" model="chatopia.message">
-        <field name="conversation_id" ref="chat_conversation_2"/>
-        <field name="sender">User 4</field>
-        <field name="content">Yes, I am! Let's plan something.</field>
-        <field name="chatwoot_message_id">105</field>
-    </record>
+        <!-- === Partner Mẫu (Giữ nguyên) === -->
+        <record id="mock_partner_alice" model="res.partner">
+            <field name="name">Alice Wonderland</field>
+            <field name="email">alice.test@example.com</field>
+        </record>
+        <record id="mock_partner_bob" model="res.partner">
+            <field name="name">Bob The Builder</field>
+            <field name="email">bob.test@example.com</field>
+        </record>
+        <record id="mock_partner_charlie" model="res.partner">
+            <field name="name">Charlie Chaplin</field>
+            <field name="email">charlie.test@example.com</field>
+        </record>
+        <record id="mock_partner_visitor" model="res.partner">
+            <field name="name">Visitor 123</field>
+            <field name="email">visitor123@unknown.example</field>
+        </record>
 
-    <!-- Conversation 3: Từ Instagram -->
-    <record id="chat_conversation_3" model="chatopia.conversation">
-        <field name="chatwoot_conversation_id">3</field>
-        <field name="inbox_name">Instagram</field>  <!-- Thay inbox -->
-        <field name="sender_name">User 5</field>
-    </record>
-    <record id="chat_message_6" model="chatopia.message">
-        <field name="conversation_id" ref="chat_conversation_3"/>
-        <field name="sender">User 5</field>
-        <field name="content">Check out this new post I found!</field>
-        <field name="chatwoot_message_id">106</field>
-    </record>
-    <record id="chat_message_7" model="chatopia.message">
-        <field name="conversation_id" ref="chat_conversation_3"/>
-        <field name="sender">User 6</field>
-        <field name="content">Wow, that looks amazing!</field>
-        <field name="chatwoot_message_id">107</field>
-    </record>
-    <record id="chat_message_8" model="chatopia.message">
-        <field name="conversation_id" ref="chat_conversation_3"/>
-        <field name="sender">User 5</field>
-        <field name="content">Right? Let's try it out!</field>
-        <field name="chatwoot_message_id">108</field>
-    </record>
+        <!-- === Conversation Mẫu (THÊM GIÁ TRỊ CHO field name) === -->
+        <record id="mock_conv_alice" model="chatopia.conversation">
+            <field name="name">Alice Wonderland</field> <!-- << Gán tên trực tiếp -->
+            <field name="contact_id" ref="mock_partner_alice"/>
+            <field name="inbox_name">Primary Inbox</field>
+        </record>
 
-    <!-- Conversation 4: Từ WhatsApp -->
-    <record id="chat_conversation_4" model="chatopia.conversation">
-        <field name="chatwoot_conversation_id">4</field>
-        <field name="inbox_name">WhatsApp</field>  <!-- Thay inbox -->
-        <field name="sender_name">User 7</field>
-    </record>
-    <record id="chat_message_9" model="chatopia.message">
-        <field name="conversation_id" ref="chat_conversation_4"/>
-        <field name="sender">User 7</field>
-        <field name="content">Can you send me the project details?</field>
-        <field name="chatwoot_message_id">109</field>
-    </record>
-    <record id="chat_message_10" model="chatopia.message">
-        <field name="conversation_id" ref="chat_conversation_4"/>
-        <field name="sender">User 8</field>
-        <field name="content">Sure, I'll send them over now.</field>
-        <field name="chatwoot_message_id">110</field>
-    </record>
+        <record id="mock_conv_bob" model="chatopia.conversation">
+            <field name="name">Bob The Builder</field> <!-- << Gán tên trực tiếp -->
+            <field name="contact_id" ref="mock_partner_bob"/>
+            <field name="inbox_name">Support Inbox</field>
+        </record>
 
-    <!-- Conversation 5: Từ Telegram -->
-    <record id="chat_conversation_5" model="chatopia.conversation">
-        <field name="chatwoot_conversation_id">5</field>
-        <field name="inbox_name">Telegram</field>  <!-- Thay inbox -->
-        <field name="sender_name">User 9</field>
-    </record>
-    <record id="chat_message_11" model="chatopia.message">
-        <field name="conversation_id" ref="chat_conversation_5"/>
-        <field name="sender">User 9</field>
-        <field name="content">Hey, did you join the group yet?</field>
-        <field name="chatwoot_message_id">111</field>
-    </record>
-    <record id="chat_message_12" model="chatopia.message">
-        <field name="conversation_id" ref="chat_conversation_5"/>
-        <field name="sender">User 10</field>
-        <field name="content">Not yet, can you send the link?</field>
-        <field name="chatwoot_message_id">112</field>
-    </record>
+         <record id="mock_conv_charlie" model="chatopia.conversation">
+            <field name="name">Charlie Chaplin</field> <!-- << Gán tên trực tiếp -->
+            <field name="contact_id" ref="mock_partner_charlie"/>
+            <field name="inbox_name">Primary Inbox</field>
+        </record>
+
+        <record id="mock_conv_visitor" model="chatopia.conversation">
+             <!-- Nếu không link contact_id, phải set sender_name và name -->
+             <field name="name">Visitor 123 From Web</field> <!-- << Gán tên trực tiếp -->
+             <!-- <field name="contact_id" ref="mock_partner_visitor"/> --> <!-- Bỏ comment nếu muốn link -->
+             <field name="sender_name">Visitor 123 From Web</field>
+             <field name="inbox_name">Website Chat</field>
+        </record>
+
+        <!-- === Message Mẫu (Giữ nguyên, nhưng sửa lại created_at của Charlie) === -->
+        <record id="mock_msg_alice_1" model="chatopia.message">
+            <field name="conversation_id" ref="mock_conv_alice"/>
+            <field name="content">Hello there! Can you help me?</field>
+            <field name="message_type">user</field>
+            <field name="created_at">2024-03-28 10:00:00</field>
+            <field name="is_read" eval="True"/>
+        </record>
+        <record id="mock_msg_alice_2" model="chatopia.message">
+            <field name="conversation_id" ref="mock_conv_alice"/>
+            <field name="content">Hi Alice, how can I assist you today?</field>
+            <field name="message_type">admin</field>
+            <field name="created_at">2024-03-28 10:01:00</field>
+            <field name="is_read" eval="True"/>
+        </record>
+         <record id="mock_msg_alice_3" model="chatopia.message">
+            <field name="conversation_id" ref="mock_conv_alice"/>
+            <field name="content">I have a question about my last order.</field>
+            <field name="message_type">user</field>
+            <field name="created_at">2024-03-29 09:30:00</field>
+            <field name="is_read" eval="False"/>
+        </record>
+        <record id="mock_msg_alice_4" model="chatopia.message">
+            <field name="conversation_id" ref="mock_conv_alice"/>
+            <field name="content">And another thing...</field>
+            <field name="message_type">user</field>
+             <field name="created_at">2024-03-29 09:31:00</field>
+            <field name="is_read" eval="False"/>
+        </record>
+
+        <record id="mock_msg_bob_1" model="chatopia.message">
+            <field name="conversation_id" ref="mock_conv_bob"/>
+            <field name="content">Can we fix it?</field>
+            <field name="message_type">user</field>
+            <field name="created_at">2024-03-27 15:00:00</field>
+            <field name="is_read" eval="True"/>
+        </record>
+        <record id="mock_msg_bob_2" model="chatopia.message">
+            <field name="conversation_id" ref="mock_conv_bob"/>
+            <field name="content">Yes, we can!</field>
+            <field name="message_type">admin</field>
+            <field name="created_at">2024-03-27 15:01:00</field>
+            <field name="is_read" eval="True"/>
+        </record>
+
+        <record id="mock_msg_charlie_1" model="chatopia.message">
+            <field name="conversation_id" ref="mock_conv_charlie"/>
+            <field name="content">A day without laughter is a day wasted.</field>
+            <field name="message_type">user</field>
+            <field name="created_at">2024-03-31 09:45:00</field> <!-- << Sửa thành ngày giờ tĩnh gần đây -->
+            <field name="is_read" eval="False"/>
+        </record>
+
+         <record id="mock_msg_visitor_1" model="chatopia.message">
+            <field name="conversation_id" ref="mock_conv_visitor"/>
+            <field name="content">Need help with pricing.</field>
+            <field name="message_type">user</field>
+            <field name="created_at">2024-03-29 11:00:00</field>
+            <field name="is_read" eval="False"/>
+        </record>
+
+    </data>
 </odoo>

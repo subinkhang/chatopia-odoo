@@ -1,0 +1,255 @@
+/* static/src/scss/messenger_view.scss */
+
+.o_chatopia_messenger {
+  display: flex;
+  height: calc(100vh - 120px); // Adjust 120px based on Odoo header/footer height if needed
+  // Or simply height: 100%; if the parent container has a defined height
+  border: 1px solid #dcdcdc;
+  background-color: #fff;
+
+  // --- Left Pane: Conversation List ---
+  .o_chatopia_list_pane {
+      display: flex;
+      flex-direction: column;
+      width: 320px; // Fixed width for the list
+      min-width: 250px; // Minimum width
+      border-right: 1px solid #dcdcdc;
+      background-color: #f9f9f9; // Slightly different background
+
+      .o_chatopia_list_header {
+          padding: 10px 15px;
+          border-bottom: 1px solid #dcdcdc;
+          flex-shrink: 0; // Prevent header from shrinking
+
+          .o_chatopia_search {
+              width: 100%;
+              padding: 8px 10px;
+              border: 1px solid #ccc;
+              border-radius: 15px; // Rounded search bar
+              box-sizing: border-box; // Include padding/border in width
+              font-size: 0.9rem;
+              &:focus {
+                  outline: none;
+                  border-color: #80bdff;
+                  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+              }
+          }
+      }
+
+      .o_chatopia_conversations {
+          flex-grow: 1; // Take remaining vertical space
+          overflow-y: auto; // Enable scrolling for the list
+          padding: 5px 0; // Padding top/bottom for the list container
+
+          .o_chatopia_conv_item {
+              display: flex;
+              align-items: center;
+              padding: 10px 15px;
+              cursor: pointer;
+              border-bottom: 1px solid #eee; // Separator
+              transition: background-color 0.2s ease;
+
+              &:hover {
+                  background-color: #ebebeb;
+              }
+
+              &.active {
+                  background-color: #e0eaf7; // Highlight active conversation
+                  // font-weight: bold; // Optional: make text bold
+              }
+
+              .o_chatopia_conv_avatar {
+                  width: 45px;
+                  height: 45px;
+                  border-radius: 50%;
+                  margin-right: 12px;
+                  object-fit: cover; // Ensure avatar covers the area
+                  flex-shrink: 0;
+              }
+
+              .o_chatopia_conv_details {
+                  flex-grow: 1;
+                  overflow: hidden; // Prevent content from overflowing
+
+                  .o_chatopia_conv_name {
+                      font-weight: 600; // Semi-bold name
+                      margin-bottom: 3px;
+                      white-space: nowrap;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      font-size: 0.95rem;
+                  }
+
+                  .o_chatopia_conv_preview {
+                      font-size: 0.85rem;
+                      color: #555;
+                      display: flex; // Use flex for better control
+                      align-items: center;
+                      white-space: nowrap;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+
+                      .o_chatopia_conv_last_msg {
+                          flex-grow: 1; // Take available space
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          margin-right: 5px; // Space before time
+                      }
+                      .o_chatopia_conv_time {
+                          color: #777;
+                          font-size: 0.8rem;
+                          flex-shrink: 0; // Prevent time from shrinking
+                      }
+                  }
+              }
+
+              .o_chatopia_unread_badge {
+                  width: 10px;
+                  height: 10px;
+                  background-color: #007bff; // Odoo primary blue
+                  border-radius: 50%;
+                  margin-left: 10px; // Space from details
+                  align-self: center; // Center vertically in the item
+                  flex-shrink: 0;
+              }
+               // Style for when there are no unread messages (placeholder)
+              &:not(:has(.o_chatopia_unread_badge)) {
+                   // Add padding or a min-width if alignment needed without badge
+                   // Example: padding-right: 20px;
+              }
+          }
+      }
+  }
+
+  // --- Right Pane: Chat Window ---
+  .o_chatopia_chat_pane {
+      flex-grow: 1; // Take remaining horizontal space
+      display: flex;
+      flex-direction: column;
+      height: 100%; // Fill the vertical space of the parent
+      background-color: #ffffff;
+
+      .o_chatopia_chat_header {
+          padding: 10px 20px;
+          border-bottom: 1px solid #dcdcdc;
+          font-weight: 600;
+          font-size: 1.05rem;
+          flex-shrink: 0; // Prevent shrinking
+          // Add styles for avatar/name display here later
+          min-height: 55px; // Ensure header has some height
+          display: flex;
+          align-items: center;
+      }
+
+      .o_chatopia_messages_window {
+          flex-grow: 1; // Take available vertical space
+          overflow-y: auto; // Enable scrolling for messages
+          padding: 20px;
+          display: flex;
+          flex-direction: column; // Stack messages vertically
+
+          .o_chatopia_message_line {
+              display: flex;
+              margin-bottom: 10px;
+              max-width: 100%; // Ensure lines don't overflow container
+
+              .o_chatopia_message_avatar {
+                  width: 30px;
+                  height: 30px;
+                  border-radius: 50%;
+                  object-fit: cover;
+                  align-self: flex-end; // Align avatar to bottom of bubble line
+                  flex-shrink: 0;
+              }
+
+              .o_chatopia_message_bubble {
+                  padding: 9px 14px;
+                  border-radius: 18px; // Rounded bubbles
+                  max-width: 70%; // Limit bubble width
+                  word-wrap: break-word; // Break long words
+                  line-height: 1.4;
+                  font-size: 0.95rem;
+                  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+              }
+
+              // --- User (Contact) Messages ---
+              &.user {
+                  justify-content: flex-start; // Align left
+
+                  .o_chatopia_message_avatar {
+                      margin-right: 8px;
+                  }
+                  .o_chatopia_message_bubble {
+                      background-color: #e4e6eb; // Light grey for user
+                      color: #050505; // Dark text
+                      border-top-left-radius: 5px; // Slightly flatten corner near avatar
+                      border-bottom-left-radius: 5px;
+                  }
+              }
+
+              // --- Admin (Odoo User) Messages ---
+              &.admin {
+                  justify-content: flex-end; // Align right
+
+                  .o_chatopia_message_bubble {
+                      background-color: #007bff; // Blue for admin (adjust color as needed)
+                      color: white;
+                      margin-left: auto; // Push bubble to the right (alternative to justify-content on parent)
+                      border-top-right-radius: 5px; // Slightly flatten corner
+                      border-bottom-right-radius: 5px;
+                  }
+                   /* Hide admin avatar if desired */
+                  .o_chatopia_message_avatar {
+                      display: none; // Usually don't show own avatar next to every message
+                  }
+              }
+          }
+      }
+
+      .o_chatopia_message_input_area {
+          padding: 10px 20px;
+          border-top: 1px solid #dcdcdc;
+          background-color: #f9f9f9; // Match list background
+          flex-shrink: 0; // Prevent shrinking
+
+          .o_chatopia_composer {
+              display: flex;
+              align-items: center;
+
+              .o_chatopia_input {
+                  flex-grow: 1;
+                  padding: 10px 15px;
+                  border: 1px solid #ccc;
+                  border-radius: 18px; // Rounded input
+                  margin-right: 10px;
+                  resize: none; // Prevent manual resize if using textarea
+                  min-height: 40px; // Ensure decent height
+                  box-sizing: border-box;
+                  font-size: 0.95rem;
+                   &:focus {
+                      outline: none;
+                      border-color: #80bdff;
+                      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                  }
+              }
+
+              .o_chatopia_send_button {
+                  flex-shrink: 0; // Prevent button shrinking
+                  // Use Odoo's default button styles or add custom ones
+                  // Example: min-width: 60px;
+              }
+
+              // Add styles for other icons/buttons (attach, emoji) here
+          }
+      }
+       // --- Placeholder/Loading States ---
+      .o_chatopia_no_conv_selected, .o_chatopia_loading_messages {
+           flex-grow: 1;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           color: #888;
+           font-size: 1.1rem;
+       }
+  }
+}

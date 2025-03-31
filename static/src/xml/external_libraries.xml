@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <!-- Đặt tên template có tiền tố là tên module để tránh trùng lặp -->
+    <t t-name="custom_owl_module.ExternalLibraries" owl="1">
+        <div class="p-3">
+             <h1>OWL Using External Libraries (intl-tel-input)</h1>
+             <!-- Thêm input element và gán t-ref -->
+             <input type="tel" t-ref="phoneInput" class="form-control my-3"/>
+             <p>Try typing a phone number.</p>
+        </div>
+    </t>
+
+</templates>

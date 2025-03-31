@@ -1,0 +1,23 @@
+<!-- chatopia_messenger/views/chatopia_menuitems.xml -->
+<odoo>
+    <data>
+        <!-- 1. Định nghĩa Menu gốc (Menu cha) -->
+        <!-- Record này phải được định nghĩa TRƯỚC menu con dùng nó làm parent -->
+        <record id="menu_chatopia_root" model="ir.ui.menu">
+            <field name="name">Chatopia</field> <!-- Tên hiển thị -->
+            <field name="sequence">1</field>   <!-- Thứ tự -->
+            <!-- Không cần parent_id vì là menu gốc -->
+            <!-- Không cần action -->
+        </record>
+
+        <!-- 2. Định nghĩa Menu con (trỏ tới Action) -->
+        <!-- Menuitem này dùng menu_chatopia_root làm parent -->
+        <!-- và dùng action_chatopia_messenger làm action -->
+        <menuitem id="menu_chatopia_messenger"
+                  name="Messenger"
+                  parent="menu_chatopia_root"
+                  action="action_chatopia_messenger"
+                  sequence="1"/>
+
+    </data>
+</odoo>

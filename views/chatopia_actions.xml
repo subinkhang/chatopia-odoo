@@ -1,0 +1,13 @@
+<!-- chatopia_messenger/views/chatopia_actions.xml -->
+<odoo>
+    <data>
+        <!-- Định nghĩa Client Action để chạy JavaScript Widget -->
+        <record id="action_chatopia_messenger" model="ir.actions.client">
+            <field name="name">Chatopia Messenger</field>
+            <!-- 'tag' này phải khớp với tên đăng ký trong JavaScript -->
+            <field name="tag">chatopia_messenger_view</field>
+            <!-- 'target': 'main' để mở trong khu vực chính của Odoo -->
+            <field name="target">main</field>
+        </record>
+    </data>
+</odoo>
